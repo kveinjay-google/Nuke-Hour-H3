@@ -31,6 +31,7 @@ public:
 	void loadTranslation();
 	void setDisplayList();
 	void changeEvent(QEvent *event) override;
+	void updateSectionList();
 	void showEvent(QShowEvent * event) override;
 
 	void setCheckbuttonState(QToolButton * button, bool checked);

@@ -1,0 +1,14 @@
+{
+  "name": "Simplified Chinese Fonts",
+  "description": "Noto Sans CJK SC 2.004 fallback for all nine VCMI game font roles. Keeps original Latin fonts. Font coverage verified statically; target iOS rendering requires runtime verification.",
+  "version": "1.0.0",
+  "author": "VCMI Phase 1 project; font by Adobe and Google",
+  "modType": "Interface",
+  "depends": ["vcmi"],
+  "licenseName": "SIL OFL 1.1 (font); GPL-2.0-or-later (configuration)",
+  "licenseURL": "https://raw.githubusercontent.com/notofonts/noto-cjk/523d033d6cb47f4a80c58a35753646f5c3608a78/LICENSE",
+  "chinese": {
+    "name": "简体中文字体",
+    "description": "为 VCMI 九种游戏字体提供 Noto Sans CJK SC 2.004 中文后备字体，保留原有拉丁字体。已验证静态字形覆盖，iOS 运行时显示仍需验证。"
+  }
+}

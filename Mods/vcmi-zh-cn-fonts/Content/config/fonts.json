@@ -1,0 +1,15 @@
+{
+  "lowPriority": true,
+  "bitmap": ["BIGFONT", "CALLI10R", "CREDITS", "HISCORE", "MEDFONT", "SMALFONT", "TIMES08R", "TINY", "VERD10B"],
+  "trueType": {
+    "BIGFONT": {"file": "NotoSansCJKsc-Regular.ttf", "size": [18, 38, 57, 76]},
+    "CALLI10R": {"file": "NotoSansCJKsc-Regular.ttf", "size": [12, 24, 36, 48]},
+    "CREDITS": {"file": "NotoSansCJKsc-Regular.ttf", "size": [22, 44, 66, 88], "outline": true},
+    "HISCORE": {"file": "NotoSansCJKsc-Regular.ttf", "size": [18, 36, 54, 72], "outline": true},
+    "MEDFONT": {"file": "NotoSansCJKsc-Regular.ttf", "size": [13, 26, 39, 52]},
+    "SMALFONT": {"file": "NotoSansCJKsc-Regular.ttf", "size": [11, 22, 33, 44]},
+    "TIMES08R": {"file": "NotoSansCJKsc-Regular.ttf", "size": [8, 16, 24, 32]},
+    "TINY": {"file": "NotoSansCJKsc-Regular.ttf", "size": [9, 18, 28, 38], "noShadow": true},
+    "VERD10B": {"file": "NotoSansCJKsc-Regular.ttf", "size": [13, 26, 39, 52]}
+  }
+}

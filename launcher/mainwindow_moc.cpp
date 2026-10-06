@@ -10,8 +10,12 @@
 #include "StdInc.h"
 #include "mainwindow_moc.h"
 #include "ui_mainwindow_moc.h"
+#include "FantasyButtonArt.h"
 
 #include <QDir>
+#include <QPainter>
+#include <QPainterPath>
+#include <QResizeEvent>
 
 #include "../lib/CConfigHandler.h"
 #include "../lib/CConsoleHandler.h"
@@ -56,26 +60,65 @@ void MainWindow::load()
 	Helper::loadSettings();
 }
 
+namespace
+{
+class TouchOptionDelegate final : public QStyledItemDelegate
+{
+public:
+ using QStyledItemDelegate::QStyledItemDelegate;
+ QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const override
+ {
+  QSize size = QStyledItemDelegate::sizeHint(option, index);
+  size.setHeight(std::max(size.height(), 44));
+  return size;
+ }
+};
+
+QIcon navigationIcon(int index)
+{
+ const std::array<const char *, 4> names = {"nav-game", "nav-mods", "nav-settings", "nav-help"};
+ return QIcon(QString(":/artwork/hd-fantasy/%1.png").arg(names.at(index)));
+}
+}
+
 void MainWindow::computeSidePanelSizes()
 {
-	QVector<QToolButton*> widgets = {
-		ui->modslistButton,
-		ui->settingsButton,
-		ui->aboutButton,
-		ui->startGameButton
-	};
+ const bool rail = width() >= 800 && height() >= 500;
+ ui->horizontalLayout->setDirection(rail ? QBoxLayout::LeftToRight : QBoxLayout::TopToBottom);
+ ui->navigationLayout->setDirection(rail ? QBoxLayout::TopToBottom : QBoxLayout::LeftToRight);
+ ui->sidePanel->setMinimumSize(rail ? QSize(100, 0) : QSize(0, 56));
+ ui->sidePanel->setMaximumSize(rail ? QSize(100, QWIDGETSIZE_MAX) : QSize(QWIDGETSIZE_MAX, 56));
+ ui->navigationLayout->setSpacing(rail ? 10 : 4);
+ ui->labelLauncherBrand->setVisible(rail || width() >= 900);
+ ui->labelLauncherBrand->setFixedHeight(rail ? 90 : 48);
+ if(rail)
+ {
+  ui->labelLauncherBrand->setPixmap(QPixmap(":/artwork/hd-fantasy/crest.png").scaled(70, 78, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+  ui->labelLauncherBrand->setAlignment(Qt::AlignCenter);
+ }
+ else
+ {
+  ui->labelLauncherBrand->setText(QStringLiteral("Nuke Hour H3"));
+ }
+ for(auto * button : {ui->startGameButton, ui->modslistButton, ui->settingsButton, ui->aboutButton})
+ {
+  button->setMinimumHeight(rail ? 90 : 48);
+  button->setMaximumHeight(rail ? 120 : 52);
+  button->setIconSize(rail ? QSize(48, 48) : QSize(24, 24));
+  button->setToolButtonStyle(rail ? Qt::ToolButtonTextUnderIcon : Qt::ToolButtonTextBesideIcon);
+ }
+}
 
-	for(auto & widget : widgets)
-	{
-		QFontMetrics metrics(widget->font());
-		QSize iconSize = widget->iconSize();
-
-		// this is minimal space that is needed for our button to avoid text clipping
-		int buttonHeight = iconSize.height() + metrics.height() + 4;
-
-		widget->setMinimumHeight(buttonHeight);
-		widget->setMaximumHeight(buttonHeight * 1.2);
-	}
+void MainWindow::resizeEvent(QResizeEvent * event)
+{
+ QMainWindow::resizeEvent(event);
+ if(ui && ui->centralWidget)
+ {
+  const int margin = height() < 500 ? 8 : 16;
+  ui->horizontalLayout->setContentsMargins(margin, margin, margin, margin);
+  ui->horizontalLayout->setSpacing(height() < 500 ? 8 : 16);
+  computeSidePanelSizes();
+ }
 }
 
 MainWindow::MainWindow(QWidget * parent)
@@ -91,6 +134,35 @@ MainWindow::MainWindow(QWidget * parent)
 	updateTranslation(); // load translation
 
 	ui->setupUi(this);
+
+ QPalette touchPalette = qApp->palette();
+ touchPalette.setColor(QPalette::Window, QColor("#102235"));
+ touchPalette.setColor(QPalette::WindowText, QColor("#f5e8cc"));
+ touchPalette.setColor(QPalette::Base, QColor("#19354b"));
+ touchPalette.setColor(QPalette::AlternateBase, QColor("#213e53"));
+ touchPalette.setColor(QPalette::Text, QColor("#f5e8cc"));
+ touchPalette.setColor(QPalette::Button, QColor("#173249"));
+ touchPalette.setColor(QPalette::ButtonText, QColor("#f5e8cc"));
+ touchPalette.setColor(QPalette::Highlight, QColor("#315974"));
+ touchPalette.setColor(QPalette::HighlightedText, QColor("#fff3d3"));
+ qApp->setPalette(touchPalette);
+ qApp->installEventFilter(new FantasyButtonArt(this));
+ QFile touchStyle(":/touch.qss");
+ if(touchStyle.open(QIODevice::ReadOnly))
+  qApp->setStyleSheet(QString::fromUtf8(touchStyle.readAll()));
+ for(auto * widget : findChildren<QWidget *>())
+  widget->setAttribute(Qt::WA_StyledBackground, true);
+ for(auto * area : findChildren<QScrollArea *>())
+  area->viewport()->setAutoFillBackground(false);
+ for(auto * combo : findChildren<QComboBox *>())
+ {
+  combo->setItemDelegate(new TouchOptionDelegate(combo));
+  combo->view()->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+#ifdef VCMI_MOBILE
+  Helper::enableScrollBySwiping(combo->view()->viewport());
+#endif
+ }
+
 
 #ifndef VCMI_MOBILE
 	connect(qApp, &QGuiApplication::screenRemoved, this, [this](QScreen *)
@@ -118,10 +190,10 @@ MainWindow::MainWindow(QWidget * parent)
 	setAcceptDrops(true);
 
 	setWindowIcon(QIcon{":/icons/menu-game.png"});
-	ui->modslistButton->setIcon(QIcon{":/icons/menu-mods.png"});
-	ui->settingsButton->setIcon(QIcon{":/icons/menu-settings.png"});
-	ui->aboutButton->setIcon(QIcon{":/icons/about-project.png"});
-	ui->startGameButton->setIcon(QIcon{":/icons/menu-game.png"});
+	ui->modslistButton->setIcon(navigationIcon(1));
+	ui->settingsButton->setIcon(navigationIcon(2));
+	ui->aboutButton->setIcon(navigationIcon(3));
+	ui->startGameButton->setIcon(navigationIcon(0));
 
 #ifndef VCMI_MOBILE
 	restoreWindowSettings();

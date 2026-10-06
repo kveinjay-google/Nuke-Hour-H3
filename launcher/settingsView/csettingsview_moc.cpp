@@ -567,7 +567,21 @@ CSettingsView::CSettingsView(QWidget * parent)
 	: QWidget(parent), ui(new Ui::CSettingsView)
 {
 	ui->setupUi(this);
-	Helper::enableScrollBySwiping(ui->settingsScrollArea);
+ updateSectionList();
+ connect(ui->comboSettingsSection, QOverload<int>::of(&QComboBox::activated), this, [this](int index)
+ {
+  auto * card = findChild<QFrame *>(ui->comboSettingsSection->itemData(index).toString());
+  if(!card) return;
+  for(auto * heading : card->findChildren<QLabel *>())
+   if(heading->property("role").toString() == "sectionTitle")
+   {
+    const int offset = heading->mapTo(ui->scrollAreaWidgetContents, QPoint(0, 0)).y();
+    ui->settingsScrollArea->verticalScrollBar()->setValue(std::max(0, offset - 12));
+    break;
+   }
+ });
+
+	Helper::enableScrollBySwiping(ui->settingsScrollArea->viewport());
 
 	loadSettings();
 }
@@ -714,11 +728,32 @@ void CSettingsView::on_comboBoxLanguage_currentIndexChanged(int index)
 	Helper::getMainWindow()->updateTranslation();
 }
 
+void CSettingsView::updateSectionList()
+{
+ QSignalBlocker blocker(ui->comboSettingsSection);
+ const int selected = ui->comboSettingsSection->currentIndex();
+ ui->comboSettingsSection->clear();
+ for(int i = 0; i < ui->settingsCardsLayout->count(); ++i)
+ {
+  auto * card = ui->settingsCardsLayout->itemAt(i)->widget();
+  if(!card) continue;
+  for(auto * heading : card->findChildren<QLabel *>())
+   if(heading->property("role").toString() == "sectionTitle")
+   {
+    ui->comboSettingsSection->addItem(heading->text(), card->objectName());
+    break;
+   }
+ }
+ if(selected >= 0 && selected < ui->comboSettingsSection->count())
+  ui->comboSettingsSection->setCurrentIndex(selected);
+}
+
 void CSettingsView::changeEvent(QEvent *event)
 {
 	if(event->type() == QEvent::LanguageChange)
 	{
 		ui->retranslateUi(this);
+		updateSectionList();
 		Languages::fillLanguages(ui->comboBoxLanguage, false);
 		loadTranslation();
 		loadToggleButtonSettings();

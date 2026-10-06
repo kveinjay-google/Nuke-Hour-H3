@@ -46,6 +46,8 @@ class CModListView : public QWidget
 	void setupModModel();
 	void setupFilterModel();
 	void setupModsView();
+	void updateTouchLayout();
+	bool compactDetailsVisible = false;
 
 	void checkManagerErrors();
 
@@ -135,6 +137,7 @@ public:
 
 protected:
 	void showEvent(QShowEvent * event) override;
+	void resizeEvent(QResizeEvent * event) override;
 
 public:
 	void downloadMod(const ModState & mod);

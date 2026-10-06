@@ -68,6 +68,11 @@ AboutProjectView::AboutProjectView(QWidget * parent)
 	, ui(std::make_unique<Ui::AboutProjectView>())
 {
 	ui->setupUi(this);
+	ui->technicalDetails->setVisible(false);
+	connect(ui->technicalDetailsButton, &QPushButton::toggled, ui->technicalDetails, &QWidget::setVisible);
+#ifdef VCMI_MOBILE
+	Helper::enableScrollBySwiping(ui->helpScrollArea->viewport());
+#endif
 
 	ui->lineEditUserDataDir->setText(pathToQString(VCMIDirs::get().userDataPath()));
 	ui->lineEditGameDir->setText(pathToQString(VCMIDirs::get().binaryPath()));

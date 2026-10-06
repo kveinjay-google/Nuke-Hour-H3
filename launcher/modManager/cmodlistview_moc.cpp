@@ -16,6 +16,8 @@
 #include <QJsonArray>
 #include <QCryptographicHash>
 #include <QRegularExpression>
+#include <QStyledItemDelegate>
+#include <QResizeEvent>
 
 #include "modstatemodel.h"
 #include "modstateitemmodel_moc.h"
@@ -40,6 +42,22 @@
 #include "../../vcmiqt/launcherdirs.h"
 
 #include <future>
+
+namespace
+{
+class TouchModItemDelegate final : public QStyledItemDelegate
+{
+public:
+	using QStyledItemDelegate::QStyledItemDelegate;
+
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const override
+	{
+		QSize size = QStyledItemDelegate::sizeHint(option, index);
+		size.setHeight(std::max(size.height(), 48));
+		return size;
+	}
+};
+}
 
 void CModListView::setupModModel()
 {
@@ -66,6 +84,8 @@ void CModListView::changeEvent(QEvent *event)
 	{
 		ui->retranslateUi(this);
 		modModel->reloadViewModel();
+		if(!ui->allModsView->currentIndex().isValid())
+			disableModInfo();
 	}
 	QWidget::changeEvent(event);
 }
@@ -106,6 +126,19 @@ void CModListView::setupModsView()
 	ui->allModsView->resizeColumnToContents(ModFields::STARS);
 
 	ui->allModsView->setUniformRowHeights(true);
+	ui->allModsView->setItemDelegate(new TouchModItemDelegate(ui->allModsView));
+	ui->allModsView->setIndentation(24);
+	ui->allModsView->header()->setMinimumHeight(44);
+	ui->allModsView->header()->setMinimumSectionSize(44);
+#ifdef VCMI_MOBILE
+	ui->allModsView->setIndentation(44);
+	ui->allModsView->header()->setStretchLastSection(false);
+	ui->allModsView->setColumnHidden(ModFields::TYPE, true);
+	ui->allModsView->setColumnHidden(ModFields::STARS, true);
+	ui->allModsView->header()->setSectionResizeMode(ModFields::NAME, QHeaderView::Stretch);
+	ui->allModsView->setColumnWidth(ModFields::STATUS_ENABLED, 44);
+	ui->allModsView->setColumnWidth(ModFields::STATUS_UPDATE, 44);
+#endif
 
 	ui->allModsView->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -127,6 +160,13 @@ CModListView::CModListView(QWidget * parent)
 	, ui(new Ui::CModListView)
 {
 	ui->setupUi(this);
+#ifdef VCMI_MOBILE
+	// Opening the mod list must not open the software keyboard.
+	// Search still receives focus when the user explicitly taps it.
+	ui->lineEdit->setFocusPolicy(Qt::ClickFocus);
+	// A browser's desktop minimum hint must not push navigation off a short screen.
+	ui->tabWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Ignored);
+#endif
 
 	ui->uninstallButton->setIcon(QIcon{":/icons/mod-delete.png"});
 	ui->enableButton->setIcon(QIcon{":/icons/mod-enabled.png"});
@@ -134,7 +174,24 @@ CModListView::CModListView(QWidget * parent)
 	ui->updateButton->setIcon(QIcon{":/icons/mod-update.png"});
 	ui->installButton->setIcon(QIcon{":/icons/mod-download.png"});
 
-	ui->splitter->setStyleSheet("QSplitter::handle {background: palette('window');}");
+	ui->splitter->setStretchFactor(0, 2);
+	ui->splitter->setStretchFactor(1, 3);
+	ui->splitter->setSizes({420, 620});
+	ui->modInfoBrowser->document()->setDocumentMargin(12);
+	ui->changelogBrowser->document()->setDocumentMargin(12);
+	connect(ui->backToModsButton, &QPushButton::clicked, this, [this]()
+	{
+		compactDetailsVisible = false;
+		updateTouchLayout();
+	});
+	connect(ui->allModsView, &QTreeView::clicked, this, [this](const QModelIndex & index)
+	{
+		if(index.isValid())
+		{
+			compactDetailsVisible = true;
+			updateTouchLayout();
+		}
+	});
 
 	disableModInfo();
 	setupModModel();
@@ -153,12 +210,37 @@ CModListView::CModListView(QWidget * parent)
 		(QAbstractItemView*)ui->allModsView,
 		(QAbstractItemView*)ui->screenshotsList})
 	{
-		Helper::enableScrollBySwiping(scrollWidget);
+		Helper::enableScrollBySwiping(scrollWidget->viewport());
 
 		scrollWidget->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 		scrollWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	}
 #endif
+	updateTouchLayout();
+}
+
+void CModListView::updateTouchLayout()
+{
+	#ifdef VCMI_MOBILE
+	const bool compact = width() < 850;
+#else
+	const bool compact = false;
+#endif
+	const bool showDetails = !compact || compactDetailsVisible;
+	ui->allModsView->setVisible(!compact || !compactDetailsVisible);
+	ui->modDetailsPanel->setVisible(showDetails);
+	ui->backToModsButton->setVisible(compact && compactDetailsVisible);
+	ui->lineEdit->setVisible(!compact || !compactDetailsVisible);
+	ui->comboBox->setVisible(!compact || !compactDetailsVisible);
+	ui->refreshButton->setVisible(!compact || !compactDetailsVisible);
+	ui->modsTitle->setVisible(height() >= 400);
+	ui->modsHint->setVisible(height() >= 400);
+}
+
+void CModListView::resizeEvent(QResizeEvent * event)
+{
+	QWidget::resizeEvent(event);
+	updateTouchLayout();
 }
 
 bool CModListView::isDemoDataPresent()
@@ -174,6 +256,7 @@ bool CModListView::isDemoDataPresent()
 void CModListView::showEvent(QShowEvent * event)
 {
 	QWidget::showEvent(event);
+	updateTouchLayout();
 	filterModel->reloadFilter();
 }
 
@@ -479,6 +562,10 @@ void CModListView::disableModInfo()
 	ui->installButton->setVisible(false);
 	ui->uninstallButton->setVisible(false);
 	ui->updateButton->setVisible(false);
+	ui->modInfoBrowser->setPlainText(tr("Select a mod from the list to view its description."));
+	ui->changelogBrowser->clear();
+	ui->tabWidget->setTabEnabled(1, false);
+	ui->tabWidget->setTabEnabled(2, false);
 }
 
 auto CModListView::buttonEnabledState(QString modName, ModState & mod)
@@ -629,8 +716,8 @@ void CModListView::selectMod(const QModelIndex & index)
 		ui->modInfoBrowser->document()->setMarkdown(genModInfoText(mod), QTextDocument::MarkdownFeature::MarkdownNoHTML);
 		ui->changelogBrowser->document()->setMarkdown(genChangelogText(mod), QTextDocument::MarkdownFeature::MarkdownNoHTML);
 
-		Helper::enableScrollBySwiping(ui->modInfoBrowser);
-		Helper::enableScrollBySwiping(ui->changelogBrowser);
+		Helper::enableScrollBySwiping(ui->modInfoBrowser->viewport());
+		Helper::enableScrollBySwiping(ui->changelogBrowser->viewport());
 
 		scrollTextBrowserToTop(ui->modInfoBrowser);
 		scrollTextBrowserToTop(ui->changelogBrowser);
@@ -663,6 +750,11 @@ void CModListView::on_allModsView_activated(const QModelIndex & index)
 {
 	selectMod(index);
 	loadScreenshots();
+	if(index.isValid())
+	{
+		compactDetailsVisible = true;
+		updateTouchLayout();
+	}
 }
 
 void CModListView::on_lineEdit_textChanged(const QString & arg1)
@@ -1842,6 +1934,12 @@ void CModListView::on_allModsView_doubleClicked(const QModelIndex &index)
 {
 	if(!index.isValid())
 		return;
+
+#ifdef VCMI_MOBILE
+	compactDetailsVisible = true;
+	updateTouchLayout();
+	return;
+#endif
 
 	auto modName = index.data(ModRoles::ModNameRole).toString();
 	auto mod = modStateModel->getMod(modName);

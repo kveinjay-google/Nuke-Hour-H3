@@ -91,10 +91,10 @@ elseif(IOS)
 		MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_LIST_DIR}/ios/Info.plist"
 		XCODE_ATTRIBUTE_LD_RUNPATH_SEARCH_PATHS "@executable_path/Frameworks"
 		XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED "$(CODE_SIGNING_ALLOWED_FOR_APPS)"
-		XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon
+		XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME NukeHourAppIcon
 	)
 
-	foreach(XCODE_RESOURCE LaunchScreen.storyboard Images.xcassets Settings.bundle vcmi_logo.png)
+	foreach(XCODE_RESOURCE NukeLaunchScreen.storyboard Images.xcassets Settings.bundle)
 		set(XCODE_RESOURCE_PATH ios/${XCODE_RESOURCE})
 		target_sources(vcmiclient PRIVATE ${XCODE_RESOURCE_PATH})
 		set_source_files_properties(${XCODE_RESOURCE_PATH} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)

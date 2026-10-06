@@ -180,6 +180,30 @@
         <source>Logs saved to %1, please send them to the developers</source>
         <translation>日志已保存到 %1，请将其发送给开发者</translation>
     </message>
+    <message>
+        <source>Help &amp; about</source>
+        <translation>帮助与关于</translation>
+    </message>
+    <message>
+        <source>Get help, back up your saves, and find your game information.</source>
+        <translation>获取帮助、备份存档并查看游戏信息。</translation>
+    </message>
+    <message>
+        <source>Support &amp; backups</source>
+        <translation>支持与备份</translation>
+    </message>
+    <message>
+        <source>Export logs when reporting a problem. Export saves to keep a backup.</source>
+        <translation>反馈问题时导出日志；导出存档以保留备份。</translation>
+    </message>
+    <message>
+        <source>Technical details</source>
+        <translation>技术详情</translation>
+    </message>
+    <message>
+        <source>These paths identify where VCMI stores game data, saves, and logs.</source>
+        <translation>这些路径显示 VCMI 存放游戏数据、存档和日志的位置。</translation>
+    </message>
 </context>
 <context>
     <name>CModListView</name>
@@ -563,8 +587,8 @@ Reason: %2</source>
         <location filename="../modManager/cmodlistview_moc.cpp" line="1629"/>
         <source>%n map(s) successfully imported.</source>
         <translation>
-            <numerusform>已成功导入 %1 张地图。</numerusform>
-        </translation>
+    <numerusform>已成功导入 %1 张地图。</numerusform>
+   </translation>
     </message>
     <message>
         <location filename="../modManager/cmodlistview_moc.cpp" line="1765"/>
@@ -625,6 +649,26 @@ Process successfully downloaded files?</source>
         <location filename="../modManager/cmodlistview_moc.cpp" line="338"/>
         <source>Mod is incompatible</source>
         <translation>模组不兼容</translation>
+    </message>
+    <message>
+        <source>Mods</source>
+        <translation>模组</translation>
+    </message>
+    <message>
+        <source>Choose a mod to view details and available actions.</source>
+        <translation>选择模组，查看详情和可用操作。</translation>
+    </message>
+    <message>
+        <source>Search mods</source>
+        <translation>搜索模组</translation>
+    </message>
+    <message>
+        <source>Back to mods</source>
+        <translation>返回模组列表</translation>
+    </message>
+    <message>
+        <source>Select a mod from the list to view its description.</source>
+        <translation>从列表中选择模组以查看说明。</translation>
     </message>
 </context>
 <context>
@@ -862,7 +906,7 @@ Fullscreen Exclusive Mode - the game will cover the entirety of your screen and 
     <message>
         <location filename="../settingsView/csettingsview_moc.ui" line="1222"/>
         <source>Autosaves per game (0 = unlimited)</source>
-        <translation type="unfinished"></translation>
+        <translation>每局自动存档数（0 为不限）</translation>
     </message>
     <message>
         <location filename="../settingsView/csettingsview_moc.ui" line="1237"/>
@@ -1134,6 +1178,10 @@ Fullscreen Exclusive Mode - the game will cover the entirety of your screen and 
         <location filename="../settingsView/csettingsview_moc.cpp" line="775"/>
         <source>Install</source>
         <translation>安装</translation>
+    </message>
+    <message>
+        <source>Settings section</source>
+        <translation>设置分组</translation>
     </message>
 </context>
 <context>
@@ -1598,6 +1646,110 @@ You need to select the offline GOG installer.</source>
         <source>A fan-made expansion inspired by Heroes V that adds alternate creature upgrades, Light and Dark Magic, Gating, a higher secondary skill cap and redesigned Conflux gameplay to Heroes III</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>YOUR GAME LIBRARY</source>
+        <translation>你的游戏库</translation>
+    </message>
+    <message>
+        <source>Import your game</source>
+        <translation>导入游戏数据</translation>
+    </message>
+    <message>
+        <source>Choose your Heroes III Complete or Shadow of Death folder. Your original files stay in place.</source>
+        <translation>选择你已购买的英雄无敌 III 完整版或死亡阴影游戏文件夹。原始文件会保留。</translation>
+    </message>
+    <message>
+        <source>Start with your game folder</source>
+        <translation>从游戏文件夹开始</translation>
+    </message>
+    <message>
+        <source>Select the folder containing Data and Maps. Music is optional.</source>
+        <translation>选择包含 Data 和 Maps 的文件夹。音乐文件可选。</translation>
+    </message>
+    <message>
+        <source>Choose game folder</source>
+        <translation>选择游戏文件夹</translation>
+    </message>
+    <message>
+        <source>Use Files to choose a folder on this device or a connected drive.</source>
+        <translation>通过“文件”选择本机或已连接存储设备中的文件夹。</translation>
+    </message>
+    <message>
+        <source>Game data is ready. Continue to optional resources.</source>
+        <translation>游戏数据已就绪，可以继续设置可选资源。</translation>
+    </message>
+    <message>
+        <source>Official HD assets · Optional</source>
+        <translation>官方高清资源 · 可选增强</translation>
+    </message>
+    <message>
+        <source>After importing Complete or Shadow of Death, you can add graphics from your own HD Edition in the launcher. HD Edition does not replace the base game.</source>
+        <translation>完成基础数据导入后，可在启动器中添加你拥有的 HD Edition 高清图像。高清版不能替代基础游戏。</translation>
+    </message>
+    <message>
+        <source>Other import methods</source>
+        <translation>其他导入方式</translation>
+    </message>
+    <message>
+        <source>GOG offline installer</source>
+        <translation>GOG 离线安装包</translation>
+    </message>
+    <message>
+        <source>Already own the game on GOG? Select both offline installer files (.exe and .bin).</source>
+        <translation>如果已在 GOG 购买游戏，请选择离线安装包的两个文件（.exe 和 .bin）。</translation>
+    </message>
+    <message>
+        <source>Choose GOG installer</source>
+        <translation>选择 GOG 安装包</translation>
+    </message>
+    <message>
+        <source>Manual copy</source>
+        <translation>手动复制</translation>
+    </message>
+    <message>
+        <source>Copy Data, Maps and optional Mp3 into the VCMI folder below, then check again.</source>
+        <translation>将 Data、Maps 和可选的 Mp3 复制到下方 VCMI 文件夹，再检查一次。</translation>
+    </message>
+    <message>
+        <source>VCMI data folder</source>
+        <translation>VCMI 数据文件夹</translation>
+    </message>
+    <message>
+        <source>Check copied files</source>
+        <translation>检查已复制的文件</translation>
+    </message>
+    <message>
+        <source>Try the free Heroes III demo before importing the full game.</source>
+        <translation>导入完整游戏前，也可先体验免费的英雄无敌 III 试玩版。</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>继续</translation>
+    </message>
+    <message>
+        <source>Welcome to VCMI.
+
+Choose your language, then import your own Heroes III Complete or Shadow of Death game data.
+
+Official HD Edition graphics can be added later as an optional enhancement. The base game is still required.</source>
+        <translation>欢迎使用 VCMI。
+
+选择界面语言，然后导入你拥有的英雄无敌 III 完整版或死亡阴影游戏数据。
+
+之后可以添加官方 HD Edition 高清图像作为可选增强。基础游戏数据仍然必需。</translation>
+    </message>
+    <message>
+        <source>Game data</source>
+        <translation>游戏数据</translation>
+    </message>
+    <message>
+        <source>Resources</source>
+        <translation>可选资源</translation>
+    </message>
+    <message>
+        <source>Choose your language. Next, add your game files.</source>
+        <translation>选择界面语言，然后添加你的游戏文件。</translation>
+    </message>
 </context>
 <context>
     <name>HdExtractor</name>
@@ -1671,10 +1823,10 @@ Exe (%n bytes):
 %1</source>
         <comment>param is hash</comment>
         <translation>
-            <numerusform>提供文件的SHA1哈希值：
+    <numerusform>提供文件的SHA1哈希值：
 Exe（%n字节）：
 %1</numerusform>
-        </translation>
+   </translation>
     </message>
     <message numerus="yes">
         <location filename="../innoextract.cpp" line="145"/>
@@ -1683,10 +1835,10 @@ Bin (%n bytes):
 %1</source>
         <comment>param is hash</comment>
         <translation>
-            <numerusform>
+    <numerusform>
 Bin (%n字节):
 %1</numerusform>
-        </translation>
+   </translation>
     </message>
     <message>
         <location filename="../innoextract.cpp" line="148"/>
@@ -2315,17 +2467,17 @@ Reason: %2</source>
         <location filename="../startGame/StartGameTab.cpp" line="212"/>
         <source>Update %n mods</source>
         <translation>
-            <numerusform>更新%n模组</numerusform>
-        </translation>
+    <numerusform>更新%n模组</numerusform>
+   </translation>
     </message>
     <message numerus="yes">
         <location filename="../startGame/StartGameTab.cpp" line="216"/>
         <source>Heroes Chronicles:
 %n/%1 installed</source>
         <translation>
-            <numerusform>英雄无敌历代记：
+    <numerusform>英雄无敌历代记：
 %n/%1 已安装</numerusform>
-        </translation>
+   </translation>
     </message>
     <message>
         <location filename="../startGame/StartGameTab.cpp" line="241"/>
@@ -2545,6 +2697,214 @@ After installation, you need to set the upscaling filter to x2 or higher in orde
         <location filename="../startGame/StartGameTab.cpp" line="640"/>
         <source>Rename preset &apos;%1&apos; to:</source>
         <translation>重命名预设&apos;%1&apos;为：</translation>
+    </message>
+    <message>
+        <source>Your next adventure</source>
+        <translation>开启下一场冒险</translation>
+    </message>
+    <message>
+        <source>Choose a mod preset, then start Heroes III.</source>
+        <translation>选择模组预设，然后开始英雄无敌 III。</translation>
+    </message>
+    <message>
+        <source>Start game</source>
+        <translation>开始游戏</translation>
+    </message>
+    <message>
+        <source>Map editor</source>
+        <translation>地图编辑器</translation>
+    </message>
+    <message>
+        <source>Active mod preset</source>
+        <translation>当前模组预设</translation>
+    </message>
+    <message>
+        <source>Manage presets</source>
+        <translation>管理预设</translation>
+    </message>
+    <message>
+        <source>Create preset</source>
+        <translation>新建预设</translation>
+    </message>
+    <message>
+        <source>Rename preset</source>
+        <translation>重命名预设</translation>
+    </message>
+    <message>
+        <source>Copy to clipboard</source>
+        <translation>复制到剪贴板</translation>
+    </message>
+    <message>
+        <source>Paste from clipboard</source>
+        <translation>从剪贴板粘贴</translation>
+    </message>
+    <message>
+        <source>Delete preset</source>
+        <translation>删除预设</translation>
+    </message>
+    <message>
+        <source>Game files</source>
+        <translation>游戏文件</translation>
+    </message>
+    <message>
+        <source>Heroes III Complete or Shadow of Death provides the required game data. HD graphics are optional.</source>
+        <translation>需要英雄无敌 III 完整版或死亡阴影的基础游戏数据。高清画面为可选增强。</translation>
+    </message>
+    <message>
+        <source>Install full game</source>
+        <translation>安装完整游戏</translation>
+    </message>
+    <message>
+        <source>Add maps, campaigns, saves, mods or GOG installers.</source>
+        <translation>添加地图、战役、存档、模组或 GOG 安装文件。</translation>
+    </message>
+    <message>
+        <source>Add HD graphics</source>
+        <translation>添加高清画面</translation>
+    </message>
+    <message>
+        <source>Optional: select files from the official Heroes III HD Edition after installing base game data.</source>
+        <translation>可选：安装基础游戏数据后，可选择官方英雄无敌 III 高清版文件。</translation>
+    </message>
+    <message>
+        <source>Install translation</source>
+        <translation>安装翻译</translation>
+    </message>
+    <message>
+        <source>Activate translation</source>
+        <translation>启用翻译</translation>
+    </message>
+    <message>
+        <source>Music files are missing.</source>
+        <translation>缺少音乐文件。</translation>
+    </message>
+    <message>
+        <source>Video files are missing.</source>
+        <translation>缺少视频文件。</translation>
+    </message>
+    <message>
+        <source>Some game files are missing or unsupported.</source>
+        <translation>部分游戏文件缺失或不受支持。</translation>
+    </message>
+    <message>
+        <source>Armageddon’s Blade campaigns are missing.</source>
+        <translation>缺少末日之刃战役文件。</translation>
+    </message>
+    <message>
+        <source>Check for updates</source>
+        <translation>检查更新</translation>
+    </message>
+    <message>
+        <source>Open downloads</source>
+        <translation>打开下载页面</translation>
+    </message>
+    <message>
+        <source>Read changelog</source>
+        <translation>查看更新记录</translation>
+    </message>
+    <message>
+        <source>About importing files</source>
+        <translation>文件导入说明</translation>
+    </message>
+    <message>
+        <source>About optional HD graphics</source>
+        <translation>可选高清画面说明</translation>
+    </message>
+    <message>
+        <source>About installing a translation</source>
+        <translation>翻译安装说明</translation>
+    </message>
+    <message>
+        <source>About activating a translation</source>
+        <translation>翻译启用说明</translation>
+    </message>
+    <message>
+        <source>About mod updates</source>
+        <translation>模组更新说明</translation>
+    </message>
+    <message>
+        <source>About Heroes Chronicles</source>
+        <translation>英雄历代记说明</translation>
+    </message>
+    <message>
+        <source>About missing music</source>
+        <translation>缺少音乐说明</translation>
+    </message>
+    <message>
+        <source>About missing videos</source>
+        <translation>缺少视频说明</translation>
+    </message>
+    <message>
+        <source>About missing game files</source>
+        <translation>缺少游戏文件说明</translation>
+    </message>
+    <message>
+        <source>About missing campaigns</source>
+        <translation>缺少战役说明</translation>
+    </message>
+    <message>
+        <source>Demo game data is active.</source>
+        <translation>当前使用演示游戏数据。</translation>
+    </message>
+    <message>
+        <source>HD graphics are optional and require Heroes III Complete or Shadow of Death game data first. Select a folder containing the official Heroes III HD Edition files.
+
+After installation, set the upscaling filter to x2 or higher to see the HD graphics.</source>
+        <translation>高清画面为可选增强，需要先安装英雄无敌 III 完整版或死亡阴影的基础游戏数据。请选择包含官方英雄无敌 III 高清版文件的文件夹。
+
+安装后，将放大滤镜设为 x2 或更高以显示高清画面。</translation>
+    </message>
+    <message>
+        <source>Heroes III · Simplified Chinese Community Edition</source>
+        <translation>英雄无敌 III · 简中社区版</translation>
+    </message>
+    <message>
+        <source>Prepare for adventure</source>
+        <translation>准备踏上征途</translation>
+    </message>
+    <message>
+        <source>A familiar world. A new journey.</source>
+        <translation>熟悉的世界，全新的旅程</translation>
+    </message>
+    <message>
+        <source>Mod preset</source>
+        <translation>模组预设</translation>
+    </message>
+    <message>
+        <source>Manage data</source>
+        <translation>管理数据</translation>
+    </message>
+    <message>
+        <source>Import HD assets</source>
+        <translation>导入高清资源</translation>
+    </message>
+    <message>
+        <source>Game data</source>
+        <translation>游戏数据</translation>
+    </message>
+    <message>
+        <source>HD asset enhancement</source>
+        <translation>高清资源增强</translation>
+    </message>
+    <message>
+        <source>HD Edition · Optional</source>
+        <translation>HD Edition · 可选</translation>
+    </message>
+    <message>
+        <source>HD assets imported</source>
+        <translation>高清资源已导入</translation>
+    </message>
+    <message>
+        <source>Data details and tools</source>
+        <translation>数据详情与工具</translation>
+    </message>
+    <message>
+        <source>VCMI %1</source>
+        <translation>VCMI %1</translation>
+    </message>
+    <message>
+        <source>Complete / SoD</source>
+        <translation>Complete / SoD</translation>
     </message>
 </context>
 <context>

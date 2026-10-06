@@ -53,6 +53,35 @@ FirstLaunchView::FirstLaunchView(QWidget * parent)
 {
 	ui->setupUi(this);
 
+	QPalette setupPalette = palette();
+	setupPalette.setColor(QPalette::Window, QColor("#102235"));
+	setupPalette.setColor(QPalette::WindowText, QColor("#f5e8cc"));
+	setupPalette.setColor(QPalette::Base, QColor("#19354b"));
+	setupPalette.setColor(QPalette::Text, QColor("#f5e8cc"));
+	setupPalette.setColor(QPalette::Button, QColor("#173249"));
+	setupPalette.setColor(QPalette::ButtonText, QColor("#f5e8cc"));
+	setupPalette.setColor(QPalette::Highlight, QColor("#315974"));
+	setupPalette.setColor(QPalette::HighlightedText, QColor("#fff3d3"));
+	setPalette(setupPalette);
+	setAutoFillBackground(false);
+	setAttribute(Qt::WA_StyledBackground, true);
+	ui->importCenterLayout->setStretch(1, 1);
+
+	QFile setupStyle(":/firstLaunch/setup.qss");
+	if(setupStyle.open(QIODevice::ReadOnly))
+		setStyleSheet(QString::fromUtf8(setupStyle.readAll()));
+
+	for(auto * button : {ui->pushButtonDataCopy, ui->pushButtonDataNext, ui->pushButtonLanguageNext, ui->pushButtonPresetNext})
+		button->setProperty("role", "primary");
+	for(auto * card : {ui->importPrimaryCard, ui->importGogCard, ui->importManualCard, ui->importDemoCard, ui->importHdNote})
+		card->setProperty("surface", "card");
+	ui->importAdvanced->hide();
+	connect(ui->buttonDataMethods, &QToolButton::toggled, this, [this](bool expanded){
+		ui->importAdvanced->setVisible(expanded);
+		ui->buttonDataMethods->setArrowType(expanded ? Qt::DownArrow : Qt::RightArrow);
+	});
+	Helper::enableScrollBySwiping(ui->scrollAreaImport->viewport());
+
 	loadModPresets();
 	createModPresetWidgets();
 
@@ -62,8 +91,8 @@ FirstLaunchView::FirstLaunchView(QWidget * parent)
 	ui->lineEditDataSystem->setText(pathToQString(boost::filesystem::absolute(VCMIDirs::get().dataPaths().front())));
 	ui->lineEditDataUser->setText(pathToQString(boost::filesystem::absolute(VCMIDirs::get().userDataPath())));
 
-	Helper::enableScrollBySwiping(ui->listWidgetLanguage);
-	Helper::enableScrollBySwiping(ui->scrollAreaPresetMods);
+	Helper::enableScrollBySwiping(ui->listWidgetLanguage->viewport());
+	Helper::enableScrollBySwiping(ui->scrollAreaPresetMods->viewport());
 
 #ifdef VCMI_MOBILE
 	// This directory is not accessible to players without rooting of their device
@@ -71,6 +100,7 @@ FirstLaunchView::FirstLaunchView(QWidget * parent)
 #endif
 
 #ifndef ENABLE_INNOEXTRACT
+	ui->importGogCard->hide();
 	ui->pushButtonGogInstall->hide();
 	ui->labelDataGogTitle->hide();
 	ui->labelDataGogDescr->hide();
@@ -276,8 +306,10 @@ void FirstLaunchView::heroesDataMissing()
 	ui->labelDataCopyTitle->setVisible(canUseDataCopy);
 	ui->labelDataCopyDescr->setVisible(canUseDataCopy);
 	ui->pushButtonDataCopy->setVisible(canUseDataCopy);
+	ui->importPrimaryCard->setVisible(canUseDataCopy);
 
 #ifdef ENABLE_INNOEXTRACT
+	ui->importGogCard->setVisible(true);
 	ui->pushButtonGogInstall->setVisible(true);
 	ui->labelDataGogTitle->setVisible(true);
 	ui->labelDataGogDescr->setVisible(true);
@@ -285,6 +317,7 @@ void FirstLaunchView::heroesDataMissing()
 
 	ui->labelDataFound->setVisible(false);
 	ui->pushButtonDataNext->setEnabled(false);
+	ui->importDemoCard->setVisible(true);
 	ui->labelDataDemoDescr->setVisible(true);
 	ui->pushButtonDemo->setVisible(true);
 }
@@ -298,6 +331,7 @@ void FirstLaunchView::heroesDataDetected()
 
 	ui->pushButtonDataSearch->setVisible(false);
 	ui->pushButtonDataCopy->setVisible(false);
+	ui->importPrimaryCard->setVisible(false);
 
 	ui->labelDataManualTitle->setVisible(false);
 	ui->labelDataManualDescr->setVisible(false);
@@ -305,6 +339,7 @@ void FirstLaunchView::heroesDataDetected()
 	ui->labelDataCopyDescr->setVisible(false);
 
 #ifdef ENABLE_INNOEXTRACT
+	ui->importGogCard->setVisible(false);
 	ui->pushButtonGogInstall->setVisible(false);
 	ui->labelDataGogTitle->setVisible(false);
 	ui->labelDataGogDescr->setVisible(false);
@@ -312,6 +347,7 @@ void FirstLaunchView::heroesDataDetected()
 
 	ui->labelDataFound->setVisible(true);
 	ui->pushButtonDataNext->setEnabled(true);
+	ui->importDemoCard->setVisible(false);
 	ui->labelDataDemoDescr->setVisible(false);
 	ui->pushButtonDemo->setVisible(false);
 	demoDataActive = CModListView::isDemoDataPresent();

@@ -1,5 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <RCC>
     <qresource prefix="/">
+        <file>firstLaunch/setup.qss</file>
+        <file>touch.qss</file>
+        <file>textures/fantasy-stone.png</file>
+        <file>textures/fantasy-parchment.png</file>
+        <file>textures/fantasy-burgundy.png</file>
+        <file>icons/fantasy-chevron-down.png</file>
+        <file>icons/fantasy-chevron-up.png</file>
+        <file>icons/touch-chevron-down.png</file>
+        <file>icons/touch-chevron-up.png</file>
+        <file>icons/touch-check.png</file>
         <file>icons/about-project.png</file>
         <file>icons/menu-editor.png</file>
         <file>icons/menu-game.png</file>
@@ -13,5 +24,22 @@
         <file>icons/submod-enabled.png</file>
         <file>icons/mod-update.png</file>
         <file>icons/star.png</file>
+        <file>artwork/hd-fantasy/primary-normal.png</file>
+        <file>artwork/hd-fantasy/secondary-normal.png</file>
+        <file>artwork/hd-fantasy/nav-game.png</file>
+        <file>artwork/hd-fantasy/nav-mods.png</file>
+        <file>artwork/hd-fantasy/nav-settings.png</file>
+        <file>artwork/hd-fantasy/nav-help.png</file>
+        <file>artwork/hd-fantasy/crest.png</file>
+        <file>artwork/hd-fantasy/data-folio.png</file>
+        <file>artwork/hd-fantasy/hd-crystal.png</file>
+        <file>artwork/hd-fantasy/navy-surface.png</file>
+        <file>artwork/hd-fantasy/primary-pressed.png</file>
+        <file>artwork/hd-fantasy/primary-active.png</file>
+        <file>artwork/hd-fantasy/primary-disabled.png</file>
+        <file>artwork/hd-fantasy/secondary-pressed.png</file>
+        <file>artwork/hd-fantasy/secondary-active.png</file>
+        <file>artwork/hd-fantasy/secondary-disabled.png</file>
+        <file>artwork/hd-fantasy/castle-background.png</file>
     </qresource>
 </RCC>

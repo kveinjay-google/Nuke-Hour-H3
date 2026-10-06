@@ -91,6 +91,7 @@ public:
 
 protected:
 	void changeEvent(QEvent * event) override;
+	void resizeEvent(QResizeEvent * event) override;
 
 public slots:
 	void on_startGameButton_clicked();

@@ -78,3 +78,19 @@ compile_commands.json
 # CLion
 .idea/
 .qtcreator/
+
+# Local community research, fixtures and signed artifacts
+/docs/phase0/
+/docs/phase1/
+*.xcresult/
+*.app/
+*.ipa
+*.mobileprovision
+*.p12
+*.p8
+.env
+.env.*
+/standard/
+/hd-edition/
+/private-evidence/
+__pycache__/

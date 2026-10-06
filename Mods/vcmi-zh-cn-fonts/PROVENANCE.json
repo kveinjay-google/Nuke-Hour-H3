@@ -1,0 +1,32 @@
+{
+  "upstream_project": "Noto CJK",
+  "upstream_repository": "https://github.com/notofonts/noto-cjk",
+  "release": "Sans2.004",
+  "release_url": "https://github.com/notofonts/noto-cjk/releases/tag/Sans2.004",
+  "upstream_commit": "523d033d6cb47f4a80c58a35753646f5c3608a78",
+  "retrieved_on": "2026-10-05",
+  "font": {
+    "family": "Noto Sans CJK SC",
+    "style": "Regular",
+    "version": "2.004",
+    "embedded_version_string": "Version 2.004;hotconv 1.0.118;makeotfexe 2.5.65603",
+    "upstream_path": "Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf",
+    "source_url": "https://raw.githubusercontent.com/notofonts/noto-cjk/523d033d6cb47f4a80c58a35753646f5c3608a78/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf",
+    "upstream_git_blob_sha1": "dc15562470b4f842321894787a0d066879ccff8b",
+    "stored_path": "Content/Data/NotoSansCJKsc-Regular.ttf",
+    "bytes": 16437364,
+    "sha256": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b",
+    "actual_format": "static OpenType/CFF (sfnt OTTO), not TrueType outlines",
+    "modification": "Filename extension only: .otf to .ttf for existing VCMI EResType::TTF_FONT indexing. Font bytes and internal names are unchanged; no conversion, subsetting or variable-font instancing."
+  },
+  "license": {
+    "name": "SIL Open Font License 1.1",
+    "spdx": "OFL-1.1",
+    "source_url": "https://raw.githubusercontent.com/notofonts/noto-cjk/523d033d6cb47f4a80c58a35753646f5c3608a78/LICENSE",
+    "stored_path": "LICENSE.OFL.txt",
+    "upstream_git_blob_sha1": "d952d62c065f3f35fb83a173496e90b21525aef3",
+    "bytes": 4301,
+    "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+    "embedded_copyright": "© 2014-2021 Adobe (http://www.adobe.com/)."
+  }
+}

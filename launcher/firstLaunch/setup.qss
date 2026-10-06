@@ -1,0 +1,22 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+FirstLaunchView { background: transparent; color: #f5e8cc; font-size: 16px; }
+FirstLaunchView QLabel { color: #f5e8cc; background: transparent; }
+FirstLaunchView QScrollArea, #importScrollContents, #importContent, #importAdvanced { background: transparent; border: none; }
+FirstLaunchView QToolButton { min-height: 44px; padding: 4px 12px; border: none; color: #f5e8cc; background: transparent; }
+FirstLaunchView QPushButton { min-height: 44px; padding: 4px 18px; border: none; color: #f5e8cc; background: transparent; font-weight: 600; }
+FirstLaunchView QPushButton[role="primary"], FirstLaunchView QToolButton[role="primary"] { color: #291d10; }
+FirstLaunchView QPushButton:disabled, FirstLaunchView QToolButton:disabled { color: #959ba0; }
+FirstLaunchView QFrame#importPrimaryCard, FirstLaunchView QFrame#importGogCard, FirstLaunchView QFrame#importManualCard, FirstLaunchView QFrame#importDemoCard, FirstLaunchView QFrame#importHdNote { background-color: #12283c; background-image: url(:/artwork/hd-fantasy/navy-surface.png); border: none; border-radius: 3px; }
+FirstLaunchView QLabel#labelImportEyebrow { font-size: 12px; font-weight: 600; color: #d9c799; }
+FirstLaunchView QLabel#labelDataTitle { font-size: 30px; font-weight: 600; }
+FirstLaunchView QLabel#labelDataCopyTitle, FirstLaunchView QLabel#labelImportHdTitle, FirstLaunchView QLabel#labelDataManualTitle, FirstLaunchView QLabel#labelDataGogTitle { font-size: 18px; font-weight: 600; }
+FirstLaunchView QLabel#labelImportSubtitle, FirstLaunchView QLabel#labelDataCopyDescr, FirstLaunchView QLabel#labelImportPickerHint, FirstLaunchView QLabel#labelImportHdDescription { color: #c9c0aa; }
+FirstLaunchView QLabel#labelImportPickerHint { font-size: 13px; }
+FirstLaunchView QLabel#labelDataFound { color: #f5e8cc; padding: 16px; background: #315974; border-radius: 3px; }
+FirstLaunchView QLineEdit { min-height: 40px; padding: 4px 10px; color: #f5e8cc; background: #132c40; border: 2px inset #425b70; border-radius: 3px; }
+FirstLaunchView QListWidget { color: #f5e8cc; background-color: #12283c; background-image: url(:/artwork/hd-fantasy/navy-surface.png); border: none; border-radius: 3px; padding: 6px; }
+FirstLaunchView QListWidget::item { min-height: 38px; padding: 3px 8px; }
+FirstLaunchView QListWidget::item:selected { color: #fff3d3; background: #315974; }
+FirstLaunchView QScrollBar:vertical { width: 8px; background: transparent; }
+FirstLaunchView QScrollBar::handle:vertical { background: #8d7856; border-radius: 4px; min-height: 32px; }
+FirstLaunchView QScrollBar::add-line:vertical, FirstLaunchView QScrollBar::sub-line:vertical { height: 0; }

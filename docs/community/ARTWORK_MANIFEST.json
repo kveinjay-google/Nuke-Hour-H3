@@ -1,0 +1,285 @@
+{
+  "method": "Original independent AI image generation and scale-only icon derivatives; no screenshot extraction",
+  "assets": [
+    {
+      "file": "launcher/artwork/hd-fantasy/primary-normal.png",
+      "sha256": "a58457c3a36dabf50ac304dd761b146991d7f50609d5cabbaf396d31f66ecfce",
+      "bytes": 1603801,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/secondary-normal.png",
+      "sha256": "eec3632a0fd502a02c7468f32f4bcc8b0072b8b3c89f3431eb5def49c2bccb70",
+      "bytes": 1095602,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/nav-game.png",
+      "sha256": "2cd84ed0931a2c9be7300ebfc92c817751f0aaffd94693a02ad9248a72127e2c",
+      "bytes": 1152591,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/nav-mods.png",
+      "sha256": "c5bdcef319e4086ff4d57b458b6b3073767a396121b7d67d6a531282dbd69f19",
+      "bytes": 2165743,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/nav-settings.png",
+      "sha256": "8600458635f46ddb434a671b25e0c20ee2805a5e62472a6c4f54a32b68973354",
+      "bytes": 1377806,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/nav-help.png",
+      "sha256": "513c054975c7e0c728fb830581cd514ee7113ec143d068cfcee0cffcf002c654",
+      "bytes": 1186262,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/crest.png",
+      "sha256": "d8e6db211e199538f3dcf6525f904cd0bbf6a72bf67854da42d99143840e032e",
+      "bytes": 1931518,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/data-folio.png",
+      "sha256": "d31c4b1da5809a97893da8aced0323bed9bfb970885b4b5ff673eb594e7cd8f1",
+      "bytes": 1912396,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/hd-crystal.png",
+      "sha256": "286ce2023cb292c94136371639b6b9084a98bada74ff7b1570f6b1d46576d406",
+      "bytes": 1119240,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/navy-surface.png",
+      "sha256": "c594efccd19a58e4b5948eedebfde46d59b3e7db9d11a3e916906df7746f6bc6",
+      "bytes": 2776916,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/primary-pressed.png",
+      "sha256": "3cec1a3a5248913b728c50c5e55dd48d15c826cfa7f7ce43b44a2a4d529236e1",
+      "bytes": 1509778,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/primary-active.png",
+      "sha256": "31ad084e0ff34e21009f581f85240e68ce12b1028ae58700a09bc5d08435d118",
+      "bytes": 1596355,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/primary-disabled.png",
+      "sha256": "5cd15dff77c0caacd3734feb6c95328a740c4c04e67855fac9ae97fae02068ba",
+      "bytes": 1505108,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/secondary-pressed.png",
+      "sha256": "a6800d37e519fedaefad5a15af773feece1e39f9c991dfce5a75c4b4a26a0041",
+      "bytes": 991650,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/secondary-active.png",
+      "sha256": "0cdf1eb807ab6119b466c66830c014ad893041316c1016b3505834f10ef4c1aa",
+      "bytes": 1195746,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/secondary-disabled.png",
+      "sha256": "30c22531184a1f0b32ef25758af3e02d758d0d1881b9260fafc75d650d54ad9a",
+      "bytes": 1153275,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/hd-fantasy/castle-background.png",
+      "sha256": "6deb997e9b0458c93e46a892700a8421193e6d63ed00001ba738701c621a9f3d",
+      "bytes": 2870919,
+      "origin": "Independently generated with built-in image generator; original PNG retained",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/app-icon/griffin-sapphire-v1.png",
+      "sha256": "e075ab05ff83f4a61d79ced87cd72e41fb561fb22850fc19f1586b2632c1b357",
+      "bytes": 2828925,
+      "origin": "Independent generated artwork; square v2 is the active iOS master, shield v1 retained as concept",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/artwork/app-icon/griffin-square-v2.png",
+      "sha256": "3eb2a9a325e1182e8b29a287e8ccca75e1553fe8df963c72224dec39a98d2186",
+      "bytes": 2513351,
+      "origin": "Independent generated artwork; square v2 is the active iOS master, shield v1 retained as concept",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-58.png",
+      "sha256": "72b494b63d88a452db474284c4a04f88a436f6bf912b65e2154a7445d3043201",
+      "bytes": 8052,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-60.png",
+      "sha256": "edb39e3030f871535ce8f3dfb44ead9cf817b3828ce500d15150b94da8f3c045",
+      "bytes": 8559,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-167.png",
+      "sha256": "bffcc6b202ae7dabf8cbe3ad4b65da0595c266009f686216cedef307e2cd9436",
+      "bytes": 57369,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-76.png",
+      "sha256": "307796dd6df2678774a8bbb3ad2a7e1f5ad2ba4ea757d1ef6943a35a92cbe6d5",
+      "bytes": 13317,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-29.png",
+      "sha256": "391d6d181e85749ace179db2189663e0619584272637ee82f1c88c0eb55a3de0",
+      "bytes": 2283,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-120.png",
+      "sha256": "633f955b73455b9bd08832c395bdaa078e67ee9770b9db895245e9aba9efe592",
+      "bytes": 31067,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-20.png",
+      "sha256": "7c1b294daafab14dd6bd2d44ea38cc3397af1474e5f6acb5dcfd53d819fd9932",
+      "bytes": 1208,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-180.png",
+      "sha256": "927aa4ff51d0c9e4930e45b1bc3635003eba8d0d824793525eef8c026d0d82f8",
+      "bytes": 66097,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-87.png",
+      "sha256": "b7ac8476f9f00f6eaeed31ac870165fa9d9453916615a1032fab7c62b5af5ffd",
+      "bytes": 17097,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-1024.png",
+      "sha256": "87cad66308f12f797c39479ebd94d875de9f4853e1e541da9894eb6178a96a28",
+      "bytes": 1779469,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-40.png",
+      "sha256": "3480f8cc0776fbcaa75d706b47fe5a5e4aa7de6d5f9fa9f13c20616afaf72328",
+      "bytes": 4060,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-152.png",
+      "sha256": "b804e51f7434c5745e3d991cb28eb3a45fb4a41bcdadacdfb2275187f334bf36",
+      "bytes": 48040,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "clientapp/ios/Images.xcassets/NukeHourAppIcon.appiconset/NukeHour-80.png",
+      "sha256": "18e9d5daf8237dc43aecd1e179d887127a14d43cfbc209404c064154ff1fa1d4",
+      "bytes": 14601,
+      "origin": "Scale-only derivative of square v2 via Apple sips",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/textures/fantasy-stone.png",
+      "sha256": "4ae58d4fb2523979b9eebb1696b4402cfb3636e206f2550158826cf717be62d3",
+      "bytes": 3069281,
+      "origin": "Original community-generated material texture",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/textures/fantasy-parchment.png",
+      "sha256": "5ff5b9c414c6b1f74cebc7c2b08432d187f07df7c041232570664b79d711edc6",
+      "bytes": 2467904,
+      "origin": "Original community-generated material texture",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/textures/fantasy-burgundy.png",
+      "sha256": "f281a428273867169f9a4b152df9c1861d1a356fec03bfd5330d2a737103ba81",
+      "bytes": 2787701,
+      "origin": "Original community-generated material texture",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/icons/fantasy-chevron-up.png",
+      "sha256": "743a540cbfa2d72aa64af6602927a58b3b28e57f51d11ca287966202094da9b8",
+      "bytes": 458,
+      "origin": "Original community-drawn control glyph",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/icons/fantasy-chevron-down.png",
+      "sha256": "4de3a4daba50123e57660bdb16fa10493d766032840803d03a8486f11e97f283",
+      "bytes": 500,
+      "origin": "Original community-drawn control glyph",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/icons/touch-chevron-up.png",
+      "sha256": "77146bc3b23978690b66c653ef6052f0a6a51750f3e6a684501e9e6bc208501c",
+      "bytes": 429,
+      "origin": "Original community-drawn control glyph",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/icons/touch-check.png",
+      "sha256": "2c66e4cc15c5cc0d21a149cfd67aadfe3a64398e12daeaf985278e1268be7163",
+      "bytes": 326,
+      "origin": "Original community-drawn control glyph",
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "launcher/icons/touch-chevron-down.png",
+      "sha256": "f9420fefe8e9bf3004892d926077de1f1e0c5f7dc1abe45d38775f19f36f10e2",
+      "bytes": 456,
+      "origin": "Original community-drawn control glyph",
+      "license": "GPL-2.0-or-later"
+    }
+  ]
+}

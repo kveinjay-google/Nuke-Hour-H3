@@ -10,6 +10,7 @@
 #include "StdInc.h"
 #include "StartGameTab.h"
 #include "ui_StartGameTab.h"
+#include <QResizeEvent>
 
 #include "../helper.h"
 #include "../mainwindow_moc.h"
@@ -44,10 +45,24 @@ StartGameTab::StartGameTab(QWidget * parent)
 	, ui(new Ui::StartGameTab)
 {
 	ui->setupUi(this);
+	setAttribute(Qt::WA_StyledBackground, true);
+	ui->presetTools->hide();
+	ui->gameDataCard->hide();
+	ui->gameSecondaryLayout->removeWidget(ui->buttonGameEditor);
+	ui->gameDataCardLayout->addWidget(ui->buttonGameEditor);
+	ui->buttonImportFiles->setFixedWidth(154);
+	ui->buttonInstallHdEdition->setFixedWidth(154);
+	connect(ui->buttonDataDetails, &QPushButton::toggled, ui->gameDataCard, &QWidget::setVisible);
+	ui->homeCenterLayout->setStretch(0, 0);
+	ui->homeCenterLayout->setStretch(1, 1);
+	ui->homeCenterLayout->setStretch(2, 0);
+	ui->homeContentLayout->setAlignment(Qt::AlignTop);
+	connect(ui->buttonPresetTools, &QPushButton::toggled, ui->presetTools, &QWidget::setVisible);
+	Helper::enableScrollBySwiping(ui->scrollArea->viewport());
 
 	ui->buttonGameResume->setIcon(QIcon{":/icons/menu-game.png"}); //TODO: different icon?
-	ui->buttonGameStart->setIcon(QIcon{":/icons/menu-game.png"});
-	ui->buttonGameEditor->setIcon(QIcon{":/icons/menu-editor.png"});
+	ui->buttonGameStart->setIcon(QIcon{});
+	ui->buttonGameEditor->setIcon(QIcon{});
 
 	refreshState();
 
@@ -65,6 +80,18 @@ StartGameTab::StartGameTab(QWidget * parent)
 		auto clipboard = QGuiApplication::clipboard();
 		connect(clipboard, SIGNAL(dataChanged()), this, SLOT(clipboardDataChanged()));
 	}
+}
+
+void StartGameTab::resizeEvent(QResizeEvent * event)
+{
+ QWidget::resizeEvent(event);
+ const bool tablet = width() >= 700 && height() >= 450;
+ ui->resourceShelfLayout->setDirection(tablet ? QBoxLayout::LeftToRight : QBoxLayout::TopToBottom);
+ ui->playCard->setFixedWidth(tablet ? 460 : std::min(500, std::max(260, width() - 36)));
+ ui->labelHeroBrand->setVisible(tablet);
+ ui->labelCommunityTitle->setVisible(tablet);
+ ui->heroAreaLayout->setContentsMargins(0, tablet ? 18 : 0, 0, tablet ? 18 : 0);
+ ui->homeContentLayout->setSpacing(tablet ? 18 : 10);
 }
 
 void StartGameTab::clipboardDataChanged()
@@ -133,19 +160,16 @@ void StartGameTab::refreshGameData()
 {
 	bool demoDataPresent = CModListView::isDemoDataPresent();
 
+	ui->labelGameMode->setText(demoDataPresent ? tr("Demo game data is active.") : QString());
+	ui->labelGameMode->setVisible(demoDataPresent);
 	ui->buttonInstallGame->setVisible(demoDataPresent);
 #ifdef ENABLE_EDITOR
 	ui->buttonGameEditor->setEnabled(!demoDataPresent);
 #endif
 
+	ui->scrollArea_2->setVisible(!demoDataPresent);
 	if (demoDataPresent)
-	{
-		for (QWidget * child : ui->scrollAreaWidgetContents_2->findChildren<QWidget*>())
-			child->setVisible(child == ui->buttonInstallGame);
 		return;
-	}
-
-	ui->scrollArea_2->setVisible(true);
 
 	// Some players are using pirated version of the game with some of the files missing
 	// leading to broken town hall menu (and possibly other dialogs)
@@ -224,13 +248,18 @@ void StartGameTab::refreshMods()
 #endif
 	ui->buttonInstallHdEdition->setVisible(canInstallHD);
 	ui->buttonInstallHdEditionHelp->setVisible(canInstallHD);
+	ui->labelOptionalHdHint->setVisible(canInstallHD);
+	ui->hdResourceStatus->setText(canInstallHD ? tr("HD Edition · Optional") : tr("HD assets imported"));
 }
 
 void StartGameTab::refreshUpdateStatus(EGameUpdateStatus status)
 {
 	QString availableVersion; // TODO
 
-	ui->labelTitleEngine->setText(QString(GameConstants::VCMI_PROJECT_NAME_VERSIONED));
+	const QString fullVersion = QString(GameConstants::VCMI_PROJECT_NAME_VERSIONED);
+	ui->labelTitleEngine->setText(tr("VCMI %1").arg(QStringLiteral("1.8")));
+	ui->labelTitleEngine->setToolTip(fullVersion);
+	ui->labelTitleEngine->setAccessibleDescription(fullVersion);
 	ui->buttonUpdateCheck->setVisible(status == EGameUpdateStatus::NOT_CHECKED);
 	ui->labelUpdateNotFound->setVisible(status == EGameUpdateStatus::NO_UPDATE);
 	ui->labelUpdateAvailable->setVisible(status == EGameUpdateStatus::UPDATE_AVAILABLE);
@@ -531,9 +560,9 @@ void StartGameTab::on_buttonMissingCampaignsHelp_clicked()
 void StartGameTab::on_buttonInstallHdEditionHelp_clicked()
 {
 	QString message = tr(
-		"To improve graphics quality in VCMI, you can install files from the official Heroes III HD version on Steam."
-		"Select the Heroes HD folder from Steam.\n\n"
-		"After installation, you need to set the upscaling filter to x2 or higher in order to actually see the HD graphics."
+		"HD graphics are optional and require Heroes III Complete or Shadow of Death game data first. "
+		"Select a folder containing the official Heroes III HD Edition files.\n\n"
+		"After installation, set the upscaling filter to x2 or higher to see the HD graphics."
 	);
 	MessageBoxCustom::information(this, ui->buttonInstallHdEdition->text(), message);
 }
